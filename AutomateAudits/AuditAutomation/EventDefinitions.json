@@ -1,0 +1,408 @@
+{
+    "Keywords":{
+        "Success":"0x8020000000000000",#9007199254740992 is the real value
+        "Failure":"0x8010000000000000" #4503599627370496 is the real value 
+    },
+    "Events":{
+        "1149":{
+            "Keywords":["Failure","Success"],
+            "Comment":"",
+            "EventText":"Remote Desktop Services: User authentication succeeded:",
+            "relevantXPaths":{
+                "SystemTime":"/Event/System/TimeCreated @SystemTime",
+                "ComputerName":"/Event/System/Computer",
+                "UserId":"/Event/System/Security/@UserID",
+                "UserName":"/Event/UserData/EventXML/Param1",
+                "Domain Name":"/Event/UserData/EventXML/Param2",
+                "Source IP Address":"/Event/UserData/EventXML/Param3"
+            }
+        },
+        "4624":{
+            "Keywords":["Failure"],
+            "Comment":"",
+            "EventText":"An account was successfully logged on.",
+            "relevantXPaths":{
+                "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                "ComputerName":"/Event/System/Computer",
+                "FailureReason":"/Event/EventData/Data/@FailureReason",
+                "TranslateFn":["TranslateFailureReason","FailureReason"],
+                "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                "TargetDomainName":"/Event/EventData/Data/@TargetDomainName",
+                "WorkstationName":"/Event/EventData/Data/@WorkstationName",
+                "LogonProcessName":"/Event/EventData/Data/@LogonProcessName"
+            }
+        },
+        "4625":{
+            "Keywords":["Failure"],
+            "Comment":"",
+            "EventText":"An account failed to log on.",
+            "relevantXPaths":{
+                "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                "ComputerName":"/Event/System/Computer",
+                "FailureReason":"/Event/EventData/Data/@FailureReason",
+                "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                "TargetDomainName":"/Event/EventData/Data/@TargetDomainName",
+                "TargetUserName":"/Event/EventData/Data/@TargetUserName",
+                "TranslateFn":[["TranslateSubStatusCode","SubStatusCode"],["TranslateFailureReason","FailureReason"]],
+                "SubStatusCode":"/Event/EventData/Data/@SubStatus",
+                "WorkstationName":"/Event/EventData/Data/@WorkstationName",
+                "LogonProcessName":"/Event/EventData/Data/@LogonProcessName",
+                "Status":"/Event/EventData/Data/@Status"
+            }
+        },
+        "4648":{
+            "Keywords":["Failure"],
+            "Comment":"",
+            "EventText":"A logon was attempted using explicit credentials.",
+            "relevantXPaths":{
+                "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                "ComputerName":"/Event/System/Computer",
+                "FailureReason":"/Event/EventData/Data/@FailureReason",
+                "TranslateFn":["TranslateFailureReason","FailureReason"],
+                "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                "TargetDomainName":"/Event/EventData/Data/@TargetDomainName",
+                "WorkstationName":"/Event/EventData/Data/@WorkstationName",
+                "TargetUserName":"/Event/EventData/Data/@LogonProcessName",
+                "ProcessName":"/Event/EventData/Data/@ProcessName"
+            }
+        },
+        "4656":{
+            "Keywords":["Failure"],
+            "Comment":"",
+            "EventText":"A handle to an object was requested.",
+            "relevantXPaths":{
+                "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                "ComputerName":"/Event/System/Computer",
+                "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                "ProcessName":"/Event/EventData/Data/@ProcessName",
+                "ObjectType":"/Event/EventData/Data/@ObjectType",
+                "ObjectName":"/Event/EventData/Data/@ObjectName",
+                "TranslateFn":["TranslateAccessReason","AccessReason"],
+                "AccessReason":"/Event/EventData/Data/@AccessReason"
+            },
+            "4673":{
+                "Keywords":["Failure"],
+                "Comment":"",
+                "EventText":"A privileged service was called.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectUserId",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "RelatedEvents":[4624],
+                    "ObjectType":"/Event/EventData/Data/@ObjectType",
+                    "ObjectName":"/Event/EventData/Data/@ObjectName",
+                    "ProcessName":"/Event/EventData/Data/@ProcessName",
+                }
+            },
+            "4674":{
+                "Keywords":["Failure"],
+                "Comment":"",
+                "EventText":"An operation was attempted on a privileged object.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectUserId",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "RelatedEvents":[4624],
+                    "ProcessName":"/Event/EventData/Data/@ProcessName"
+                }
+            },
+            "4723":{
+                "Keywords":["Failure","Success"],
+                "Comment":"",
+                "EventText":"An operation was attempted on a privileged object.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectUserId",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "RelatedEvents":[4624],
+                    "ProcessName":"/Event/EventData/Data/@ProcessName"
+                }
+            },
+            "4728":{
+                "Keywords":["Success"],
+                "Comment":"",
+                "EventText":"A member was added to a security-enabled global group.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "MemberName":"/Event/EventData/Data/@MemberName",
+                    "MemberSid":"/Event/EventData/Data/@MemberSid",
+                    "TargetDomainName":"/Event/EventData/Data/@TargetDomainName",
+                    "TargetUserName":"/Event/EventData/Data/@TargetUserName",
+                    "TargetSid":"/Event/EventData/Data/@TargetSid",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectLogonId",
+                }
+            },
+            "4738":{
+                "Keywords":["Success"],
+                "Comment":"",
+                "EventText":"A member was added to a security-enabled global group.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "MemberName":"/Event/EventData/Data/@MemberName",
+                    "MemberSid":"/Event/EventData/Data/@MemberSid",
+                    "TargetDomainName":"/Event/EventData/Data/@TargetDomainName",
+                    "TargetUserName":"/Event/EventData/Data/@TargetUserName",
+                    "TargetSid":"/Event/EventData/Data/@TargetSid",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectLogonId",
+                    "DisplayName":"/Event/EventData/Data/@DisplayName",
+                    "SamAccountName":"/Event/EventData/Data/@SamAccountName"
+                }
+            },
+            "4740":{
+                "Keywords":["Success"],
+                "Comment":"",
+                "EventText":"A user account was locked out.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "TargetSid":"/Event/EventData/Data/@TargetSid",
+                    "TargetUserName":"/Event/EventData/Data/@TargetUserName",
+                    "TargetDomainName":"/Event/EventData/Data/@TargetDomainName",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectLogonId"
+                }
+            },
+            "4766":{
+                "Keywords":["Success"],
+                "Comment":"This event needs to be tested to ensure all relevant fields are actually being collected.",
+                "EventText":"An attempt to add SID History to an account failed.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "TargetSid":"/Event/EventData/Data/@TargetSid",
+                    "TargetUserName":"/Event/EventData/Data/@TargetUserName",
+                    "TargetDomainName":"/Event/EventData/Data/@TargetDomainName",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectLogonId"
+            },
+            "4774":{
+                "Keywords":["Failure","Success"],
+                "Comment":"This event needs to be tested to ensure all relevant fields are actually being collected.",
+                "EventText":"An account was mapped for logon.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "TargetSid":"/Event/EventData/Data/@TargetSid",
+                    "TargetUserName":"/Event/EventData/Data/@TargetUserName",
+                    "TargetDomainName":"/Event/EventData/Data/@TargetDomainName",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectLogonId"
+                }
+            },
+            "4775":{
+                "Keywords":["Failure"],
+                "Comment":"This event needs to be tested to ensure all relevant fields are actually being collected.",
+                "EventText":"An account could not be mapped for logon.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "TargetSid":"/Event/EventData/Data/@TargetSid",
+                    "TargetUserName":"/Event/EventData/Data/@TargetUserName",
+                    "TargetDomainName":"/Event/EventData/Data/@TargetDomainName",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectLogonId"
+                }
+            },
+            "4776":{
+                "Keywords":["Failure"],
+                "Comment":"This event needs to be tested to ensure all relevant fields are actually being collected.",
+                "EventText":"The computer attempted to validate the credentials for an account.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "TargetSid":"/Event/EventData/Data/@TargetSid",
+                    "TargetUserName":"/Event/EventData/Data/@TargetUserName",
+                    "TargetDomainName":"/Event/EventData/Data/@TargetDomainName",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectLogonId"
+                }
+            },
+            "4777":{
+                "Keywords":["Failure"],
+                "Comment":"This event needs to be tested to ensure all relevant fields are actually being collected.",
+                "EventText":"The domain controller failed to validate the credentials for an account.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "TargetSid":"/Event/EventData/Data/@TargetSid",
+                    "TargetUserName":"/Event/EventData/Data/@TargetUserName",
+                    "TargetDomainName":"/Event/EventData/Data/@TargetDomainName",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectLogonId"
+                }
+            },
+            "4985":{
+                "Keywords":["Success"],
+                "Comment":"This event needs to be tested to ensure all relevant fields are actually being collected.",
+                "EventText":"The state of a transaction has changed.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectLogonId",
+                    "ProcessName":"/Event/EventData/Data/@ProcessName"
+                }
+            },
+            "5027":{
+                "Keywords":["Failure"],
+                "Comment":"",
+                "EventText":"The Windows Firewall Service was unable to retrieve the security policy from the local storage. The service will continue enforcing the current policy.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "ErrorCode":"/Event/EventData/Data/@ErrorCode"
+                }
+            },
+            "5028":{
+                "Keywords":["Failure"],
+                "Comment":"",
+                "EventText":"The Windows Firewall Service was unable to parse the new security policy. The service will continue with currently enforced policy.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "ErrorCode":"/Event/EventData/Data/@ErrorCode"
+                }
+            },
+            "5029":{
+                "Keywords":["Failure"],
+                "Comment":"Was unable to test, please save a copy of the XML for this event in the event log if you are seeing this.",
+                "EventText":"The Windows Firewall Service failed to initialize the driver. The service will continue to enforce the current policy.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "ErrorCode":"/Event/EventData/Data/@ErrorCode"
+                }
+            },
+            "5030":{
+                "Keywords":["Failure"],
+                "Comment":"Was unable to test, please save a copy of the XML for this event in the event log if you are seeing this.",
+                "EventText":"The Windows Firewall Service failed to initialize the driver. The service will continue to enforce the current policy.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "ErrorCode":"/Event/EventData/Data/@ErrorCode"
+                }
+            },
+            "5032":{
+                "Keywords":["Failure"],
+                "Comment":"Was unable to test, please save a copy of the XML for this event in the event log if you are seeing this.",
+                "EventText":"Windows Firewall was unable to notify the user that it blocked an application from accepting incoming connections on the network.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "ErrorCode":"/Event/EventData/Data/@ErrorCode"
+                }
+            },
+            "5035":{
+                "Keywords":["Failure"],
+                "Comment":"Was unable to test, please save a copy of the XML for this event in the event log if you are seeing this.",
+                "EventText":"Windows Firewall was unable to notify the user that it blocked an application from accepting incoming connections on the network.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "ErrorCode":"/Event/EventData/Data/@ErrorCode"
+                }
+            },
+            "5037":{
+                "Keywords":["Failure"],
+                "Comment":"Was unable to test, please save a copy of the XML for this event in the event log if you are seeing this.",
+                "EventText":"The Windows Firewall Driver detected critical runtime error. Terminating.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "ErrorCode":"/Event/EventData/Data/@ErrorCode"
+                }
+            },
+            "5038":{
+                "Keywords":["Failure"],
+                "Comment":"Was unable to test, please save a copy of the XML for this event in the event log if you are seeing this.",
+                "EventText":"Code integrity determined that the image hash of a file is not valid. The file could be corrupt due to unauthorized modification or the invalid hash could indicate a potential disk device error.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "ErrorCode":"/Event/EventData/Data/@ErrorCode"
+                }
+            },
+            "5057":{
+                "Keywords":["Failure"],
+                "Comment":"Was unable to test, please save a copy of the XML for this event in the event log if you are seeing this.",
+                "EventText":"A cryptographic primitive operation failed.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "ErrorCode":"/Event/EventData/Data/@ErrorCode"
+                }
+            },
+            "5058":{
+                "Keywords":["Failure","Success"],
+                "Comment":"Was unable to test, please save a copy of the XML for this event in the event log if you are seeing this.",
+                "EventText":"Key file operation.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectLogonId",
+                    "AlgorithName":"/Event/EventData/Data/@AlgorithName",
+                    "KeyName":"/Event/EventData/Data/@KeyName",
+                    "KeyType":"/Event/EventData/Data/@KeyType",
+                    "KeyFilePath":"/Event/EventData/Data/@KeyFilePath",
+                    "Operation":"/Event/EventData/Data/@Operation",
+                    "ReturnCode":"/Event/EventData/Data/@Operation"
+                }
+            },
+            "5059":{
+                "Keywords":["Failure","Success"],
+                "Comment":"Was unable to test, please save a copy of the XML for this event in the event log if you are seeing this.",
+                "EventText":"Key migration operation.",
+                "relevantXPaths":{
+                    "SystemTime":"/Event/System/TimeCreated/@SystemTime",
+                    "ComputerName":"/Event/System/Computer",
+                    "SubjectUserSid":"/Event/EventData/Data/@SubjectUserSid",
+                    "SubjectUserName":"/Event/EventData/Data/@SubjectUserName",
+                    "SubjectDomainName":"/Event/EventData/Data/@SubjectDomainName",
+                    "SubjectLogonId":"/Event/EventData/Data/@SubjectLogonId",
+                    "AlgorithName":"/Event/EventData/Data/@AlgorithName",
+                    "KeyName":"/Event/EventData/Data/@KeyName",
+                    "KeyType":"/Event/EventData/Data/@KeyType",
+                    "Operation":"/Event/EventData/Data/@Operation",
+                    "ReturnCode":"/Event/EventData/Data/@Operation"
+                }
+            }
+        }
+    }
+}
